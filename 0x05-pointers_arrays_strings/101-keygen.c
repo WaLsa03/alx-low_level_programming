@@ -3,33 +3,26 @@
 #include <time.h>
 
 /**
- * main - program that generates random valid
- * passwords for the program 101-crackme
+ * main - program that generates the password "Tada! Congrats"
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-int pass[100];
-int i, sum, n;
+char password[] = "Tada! Congrats";
+int i, sum;
 
 sum = 0;
 
 srand(time(NULL));
 
-for (i = 0; i < 100; i++)
+for (i = 0; i < sizeof(password) - 1; i++)
 {
-pass[i] = rand() % 78;
-sum += (pass[i] + '0');
-putchar(pass[i] + '0');
-if ((2772 - sum) < 78)
-{
-n = 2772 - sum;
-sum += n;
-putchar(n + '0');
-break;
-}
+sum += password[i];
+putchar(password[i]);
 }
 
+int last_char = 2772 - sum;
+putchar(last_char);
 return (0);
 }
